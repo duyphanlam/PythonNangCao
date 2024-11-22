@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='checkout_style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Thông Tin Thanh Toán</h2>
+        <form method="POST" action="{{ url_for('checkout') }}">
+            <label>Tên:</label>
+            <input type="text" name="name" required>
+            <label>Điện thoại:</label>
+            <input type="text" name="phone" required>
+            <label>Email:</label>
+            <input type="email" name="email" required>
+            <label>Địa chỉ:</label>
+            <input type="text" name="address" required>
+            <label>Quận/Huyện:</label>
+            <input type="text" name="district" required>
+            <label>Xã/Phường:</label>
+            <input type="text" name="ward" required>
+            <label>Tỉnh/Thành phố:</label>
+            <input type="text" name="city" required>
+            <button type="submit">Xác nhận thanh toán</button>
+        </form>
+    </div>
+</body>
+</html>

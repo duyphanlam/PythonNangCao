@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+</head>
+<body>
+    <div class="thank-you-container">
+        <h1>Thank You for Your Registration!</h1>
+        <p>We're excited to have you on board. Get ready for exclusive content and updates.</p>
+        <button class="back-button" onclick="window.location.href='{{ url_for('index') }}'">Back to Homepage</button>
+    
+    </div>
+</body>
+</html>

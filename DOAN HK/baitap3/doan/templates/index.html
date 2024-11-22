@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Trang Chủ</title>
+    <style>
+        /* Thêm một số kiểu CSS cơ bản cho sản phẩm */
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around; /* Căn giữa các sản phẩm */
+            margin: 20px; /* Khoảng cách xung quanh */
+        }
+        .product {
+            border: 1px solid #ddd; /* Viền sản phẩm */
+            border-radius: 5px; /* Bo góc */
+            padding: 15px; /* Khoảng cách bên trong */
+            margin: 10px; /* Khoảng cách giữa các sản phẩm */
+            text-align: center; /* Căn giữa nội dung */
+            width: 200px; /* Chiều rộng sản phẩm */
+        }
+        .product img {
+            width: 200px; /* Đặt chiều rộng cố định */
+            height: 200px; /* Đặt chiều cao cố định để tạo hình vuông */
+            object-fit: cover; /* Giữ tỉ lệ ảnh và cắt bớt nếu cần */
+            margin-bottom: 10px; /* Khoảng cách dưới ảnh */
+        }
+        .add-to-cart {
+            display: inline-block; /* Hiển thị dưới dạng khối */
+            background-color: #28a745; /* Màu nền xanh */
+            color: white; /* Màu chữ trắng */
+            padding: 10px 15px; /* Khoảng cách bên trong */
+            border-radius: 5px; /* Bo góc */
+            text-decoration: none; /* Không gạch chân */
+        }
+        .add-to-cart:hover {
+            background-color: #218838; /* Màu nền khi hover */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Trang Sản Phẩm</h1>
+        <a href="{{ url_for('cart') }}" class="cart-icon">
+            Giỏ hàng
+            <span class="cart-count">{{ cart_count }}</span>
+        </a>
+        <a href="{{ url_for('login') }}">Đăng Nhập</a>
+        <!-- Hiển thị lời chào người dùng -->
+        {% if username %}
+        <div class="welcome-message">Chào {{ username }}</div>
+    {% endif %}
+        <a href="{{ url_for('register') }}">Đăng Ký</a>
+        <a href="{{ url_for('logout') }}">Đăng Xuất</a>
+    </header>
+
+    <div class="product-list">
+        <!-- Sản phẩm 1 -->
+        <div class="product">
+            <img src="{{ url_for('static', filename='images/quần_xám.jpg') }}" alt="Quần xám">
+            <h3><a href="{{ url_for('product_detail', product_id=1) }}">Quần xám</a></h3> <!-- Thêm liên kết đến trang chi tiết sản phẩm -->
+            <p>Giá: {{ products[0].price | number_format(0, ',', '.') }} VNĐ</p>
+            <a href="{{ url_for('add_to_cart', product_id=1) }}" class="add-to-cart">Thêm vào giỏ</a>
+        </div>
+
+        <!-- Sản phẩm 2 -->
+        <div class="product">
+            <img src="{{ url_for('static', filename='images/quần_đen.jpg') }}" alt="Quần đen">
+            <h3><a href="{{ url_for('product_detail', product_id=2) }}">Quần đen</a></h3> <!-- Thêm liên kết đến trang chi tiết sản phẩm -->
+            <p>Giá: {{ products[1].price | number_format(0, ',', '.') }} VNĐ</p>
+            <a href="{{ url_for('add_to_cart', product_id=2) }}" class="add-to-cart">Thêm vào giỏ</a>
+        </div>
+
+        <!-- Sản phẩm 3 -->
+        <div class="product">
+            <img src="{{ url_for('static', filename='images/giày_đen.jpg') }}" alt="Giày đen">
+            <h3><a href="{{ url_for('product_detail', product_id=3) }}">Giày đen</a></h3> <!-- Thêm liên kết đến trang chi tiết sản phẩm -->
+            <p>Giá: {{ products[2].price | number_format(0, ',', '.') }} VNĐ</p>
+            <a href="{{ url_for('add_to_cart', product_id=3) }}" class="add-to-cart">Thêm vào giỏ</a>
+        </div>
+    </div>
+</body>
+</html>
